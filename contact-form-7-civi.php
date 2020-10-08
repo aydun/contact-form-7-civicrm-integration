@@ -61,7 +61,7 @@ function cf7_civi_before_send_mail($contact_form) {
       $data[$key] = $val;
     }
   }
-  $result = $api->call($entity, $action, $data);
+  $result = $api->$entity->$action($data);
 }
 
 function contact_form_properties($properties) {
