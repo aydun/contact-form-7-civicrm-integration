@@ -40,6 +40,7 @@ function cf7_civi_before_send_mail($contact_form) {
     'api_key'=> cf7_civi_settings::getApiKey(),
     'key'=> cf7_civi_settings::getSiteKey(),
     'path' => cf7_civi_settings::getPath(),
+    'referer' => plugins_url('', __FILE__),
   ));
   $action = $properties['civicrm']['action'];
   $entity = $properties['civicrm']['entity'];

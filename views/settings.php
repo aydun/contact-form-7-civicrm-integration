@@ -3,6 +3,8 @@
     <div class="wrap">
       <h1><?php esc_html_e( 'CiviCRM Settings' , 'contact-form-7-civicrm-integration');?></h1>
 
+      <?php echo cf7_civi_admin::validate(); ?>
+
       <div><?php esc_html_e( 'Leave these settings blank if CiviCRM is installed on the same WordPress server', 'contact-form-7-civicrm-integration' );?></div>
 
       <form name="cf7_civi_admin" id="cf7_civi_admin" action="<?php echo esc_url( cf7_civi_admin::get_page_url() ); ?>" method="POST">

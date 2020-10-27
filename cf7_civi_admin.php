@@ -61,6 +61,37 @@ class cf7_civi_admin {
     cf7_civi_admin::view( 'settings', compact( 'host', 'site_key', 'api_key', 'path') );
   }
 
+  /**
+   * Validates the settings.  Attempts an API call and returns status information
+   */
+  public static function validate() {
+    $host = cf7_civi_settings::getHost();
+    $site_key = cf7_civi_settings::getSiteKey();
+    $api_key = cf7_civi_settings::getApiKey();
+    $path = cf7_civi_settings::getPath();
+    $referer = plugins_url( '', __FILE__ );
+    $error = '';
+
+    if ($host && (!$api_key || !$site_key)) {
+      $error = __("Both the Site Key and API Key must be specified if the Server is set", 'contact-form-7-civicrm-integration');
+    }
+    else {
+      $api = new civicrm_api3 ([
+        'server' => $host,
+        'api_key'=> $api_key,
+        'key' => $site_key,
+        'path' => $path,
+        'referer' => $referer,
+      ]);
+      if (!$api->System->get()) {
+        $error = $api->errorMsg();
+      }
+    }
+    return $error ?
+      '<div class="notice notice-error">' . __('Validation failed', 'contact-form-7-civicrm-integration') . ": " . $error . '</div>' :
+      '<div class="notice notice-success">' . __('Validation successful', 'contact-form-7-civicrm-integration') . '</div>';
+  }
+
   public static function view( $name, array $args = array() ) {
     $args = apply_filters( 'cf7_civi_view_arguments', $args, $name );
 
