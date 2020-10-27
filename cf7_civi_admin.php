@@ -18,11 +18,18 @@ class cf7_civi_admin {
       add_action( 'wpcf7_save_contact_form', array('cf7_civi_admin', 'save_contact_form'));
 
       add_filter( 'wpcf7_editor_panels', array('cf7_civi_admin', 'panels'));
+      add_filter( 'plugin_action_links', ['cf7_civi_admin', 'add_action_links'], 10, 2);
     }
   }
 
   public static function admin_menu() {
-    add_options_page( __('CiviCRM Settings', 'contact-form-7-civicrm-integration'), __('CiviCRM Settings', 'contact-form-7-civicrm-integration'), 'manage_options', 'cf7_civi_admin', array( 'cf7_civi_admin', 'display_page' ) );
+    add_options_page(
+      __('CiviCRM Contact Form 7 Settings', 'contact-form-7-civicrm-integration'),
+      __('CiviCRM Contact Form 7 Settings', 'contact-form-7-civicrm-integration'),
+      'manage_options',
+      'cf7_civi_admin',
+      [ 'cf7_civi_admin', 'display_page' ]
+    );
   }
 
   public static function get_page_url( $page = 'config' ) {
@@ -116,6 +123,21 @@ class cf7_civi_admin {
       CF7_CIVI__PLUGIN_URL. 'js/admin.js',
       array( 'jquery', 'jquery-ui-tabs' )
     );
+  }
+
+  /**
+   * Add link to settings page to plugin listing
+   */
+  public static function add_action_links( $links, $file ) {
+    if ($file == plugin_basename( dirname( __FILE__ ) . '/contact-form-7-civi.php')) {
+      $link = add_query_arg( [ 'page' => 'cf7_civi_admin' ], admin_url( 'options-general.php' ) );
+      $links[] = sprintf(
+        '<a href="%1$s">%2$s</a>',
+        esc_url( $link ),
+        esc_html__( 'Settings' )
+      );
+    }
+    return $links;
   }
 
 }
