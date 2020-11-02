@@ -7,12 +7,12 @@
 /*
 Plugin Name: Contact Form 7 CiviCRM integration
 Plugin URI: https://www.civicoop.org
-Description: Submit contact form 7 to an external CiviCRM
-Version: 1.0.0
+Description: Submit Contact Form 7 to an external CiviCRM
+Version: 1.7
 Author: Jaap Jansma
 Author URI: https://www.civicoop.org
 License: AGPLv3
-Text Domain: ccontact-form-7-civicrm-integration
+Text Domain: contact-form-7-civicrm-integration
 */
 
 define( 'CF7_CIVI__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
