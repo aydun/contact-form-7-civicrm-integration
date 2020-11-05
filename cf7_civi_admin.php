@@ -72,7 +72,10 @@ class cf7_civi_admin {
     $referer = plugins_url( '', __FILE__ );
     $error = '';
 
-    if ($host && (!$api_key || !$site_key)) {
+    if (!$host && !class_exists('CRM_Core_Config')) {
+      $error = __("No local installation of CiviCRM found.  You must specify the Server");
+    }
+    elseif ($host && (!$api_key || !$site_key)) {
       $error = __("Both the Site Key and API Key must be specified if the Server is set", 'contact-form-7-civicrm-integration');
     }
     else {
