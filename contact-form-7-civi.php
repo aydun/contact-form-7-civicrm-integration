@@ -8,7 +8,7 @@
 Plugin Name: Contact Form 7 CiviCRM integration
 Plugin URI: https://www.civicoop.org
 Description: Submit Contact Form 7 to an external CiviCRM
-Version: 1.7
+Version: 1.8
 Author: Jaap Jansma
 Author URI: https://www.civicoop.org
 License: AGPLv3

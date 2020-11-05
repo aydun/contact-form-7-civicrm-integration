@@ -5,7 +5,7 @@ Tags: contact form 7, cf7, civicrm
 Requires at least: 4.3
 Tested up to: 5.5.1
 Requires PHP: 7.2
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,8 @@ For example, if the API call needs a field called *first_name* then your form te
 
 == Changelog ==
 
+= 1.8 =
+Fix for validation when no local CiviCRM
 = 1.7 =
 Added validation to settings page
 Added link to settings from plugins page
