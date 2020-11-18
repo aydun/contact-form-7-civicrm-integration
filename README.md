@@ -35,6 +35,8 @@ For example, if the API call needs a field called *first_name* then your form te
 
 == Changelog ==
 
+= 1.9 (not released) =
+Trim whitespace from settings
 = 1.8 =
 Fix for validation when no local CiviCRM
 = 1.7 =

@@ -7,35 +7,35 @@
 class cf7_civi_settings {
 
   public static function getHost() {
-    return get_option('cf7_civi_host');
+    return trim( get_option('cf7_civi_host') );
   }
 
   public static function getPath() {
-    return get_option('cf7_civi_path') ? get_option('cf7_civi_path') : '/sites/all/modules/civicrm/extern/rest.php';
+    return trim( get_option('cf7_civi_path') ) ? trim( get_option('cf7_civi_path') ) : '/sites/all/modules/civicrm/extern/rest.php';
   }
 
   public static function setHost($host) {
-    update_option( 'cf7_civi_host', $host );
+    update_option( 'cf7_civi_host', trim( $host ) );
   }
 
   public static function setPath($path) {
-    update_option( 'cf7_civi_path', $path );
+    update_option( 'cf7_civi_path', trim( $path ) );
   }
 
   public static function getSiteKey() {
-    return get_option('cf7_civi_site_key');
+    return trim( get_option('cf7_civi_site_key') );
   }
 
   public static function setSiteKey($key) {
-    update_option( 'cf7_civi_site_key', $key );
+    update_option( 'cf7_civi_site_key', trim( $key ) );
   }
 
   public static function getApiKey() {
-    return get_option('cf7_civi_api_key');
+    return trim( get_option('cf7_civi_api_key') );
   }
 
   public static function setApiKey($key) {
-    update_option( 'cf7_civi_api_key', $key );
+    update_option( 'cf7_civi_api_key', trim( $key ) );
   }
 
 }
